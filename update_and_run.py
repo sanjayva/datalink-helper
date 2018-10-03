@@ -70,6 +70,14 @@ def kick_off_connector(authtoken, agentid, connectorid):
     else:
         raise ValueError("Could not kick off the connector, got response: " + str(connector_config_resp.status_code) + ": " + connector_config_resp.json()["error"])
 
+def get_connector_list(authtoken, agentid):
+    """Gets the list of connectors attached to an agent"""
+    connector_list_url = BASEURL4DATALINK +  "/api/v1/resource/agent/" + agentid + "/connector?include=name,type,lastRun,status"
+    connector_list_resp = requests.get(connector_list_url, headers={"Content-Type": "application/json", "apptio-opentoken": authtoken})
+    if connector_list_resp.status_code == 200:
+        return connector_list_resp.json()['result']
+    else:
+        raise ValueError("Could not retrieve the connector configuration, got response: " + str(connector_list_resp.status_code) + ": " + connector_list_resp.json()["error"])
         
 def gotosleep(secs):
     """ Function to wait for n seconds """
