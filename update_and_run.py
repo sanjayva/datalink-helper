@@ -87,20 +87,19 @@ def gotosleep(secs):
 ##### Actual Script starts here
 
 ##### List of Connectors to update
-connector_list = ["6970bdbe-916f-4295-a181-4392ef1d8019",
-                  "8e18c840-b215-4e41-8772-1204aa2651f7",
-                  "4b9b530d-9e45-4abd-9bfe-6019046526d0",
-                  "b31d34e0-d834-475c-8748-3374f513584a",
-                  "fb08b3e9-d9c0-467e-be0a-26a419ba1b4a",
-                  "e59396cd-3a69-4ed4-a612-27fa6328d7a1"]
+connector_list = ["XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                  "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                  "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                  "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                  "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                  "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"]
       
   
 month_list = [["2018", "SEPTEMBER", "Sep:FY2018"]]
 
-Run_Connectors = True
+Run_Connectors = False 
 
 auth_token = get_auth_token(APIPUBLICKEY, APISECRETKEY)
-
 
 
 for ctmonth in month_list:
