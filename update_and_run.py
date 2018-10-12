@@ -100,6 +100,32 @@ def get_connector_list():
     else:
         raise ValueError("Could not retrieve the connector configuration, got response: " + str(connector_list_resp.status_code) + ": " + connector_list_resp.json()["error"])
         
+def get_agent_list():
+    """Gets the list of agents attached to DataLink Manager"""
+
+    if auth_token == '':
+      get_auth_token()
+    
+    agent_list_url = BASEURL4DATALINK +  "/api/v1/resource/agent/"
+    agent_list_resp = requests.get(agent_list_url, headers={"Content-Type": "application/json", "apptio-opentoken": auth_token})
+    if agent_list_resp.status_code == 200:
+        return agent_list_resp.json()['result']
+    else:
+        raise ValueError("Could not retrieve the agent list, got response: " + str(agent_list_resp.status_code) + ": " + agent_list_resp.json()["error"])
+
+def get_agent_details(agentid):
+    """Gets the details of a specific agent"""
+
+    if auth_token == '':
+      get_auth_token()
+    
+    agent_details_url = BASEURL4DATALINK +  "/api/v1/resource/agent/" + agentid
+    agent_details_resp = requests.get(agent_details_url, headers={"Content-Type": "application/json", "apptio-opentoken": auth_token})
+    if agent_details_resp.status_code == 200:
+        return agent_details_resp.json()
+    else:
+        raise ValueError("Could not retrieve the agent list, got response: " + str(agent_details_resp.status_code) + ": " + agent_details_resp.json()["error"])
+        
 def gotosleep(secs):
     """ Function to wait for n seconds """
     print("Sleeping for " + str(secs) + " seconds")
